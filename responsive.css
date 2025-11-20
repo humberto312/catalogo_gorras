@@ -83,10 +83,10 @@
 
   .carrusel1, .carrusel2, .carrusel3 {
     /* recuadro más pequeño y centrado */
-    width: min(260px, 90%);
-    height: 220px;               /* altura fija para contener la imagen y permitir overlay */
+    width: min(220px, 90%);
+    height: 180px;               /* altura fija para contener la imagen y permitir overlay */
     margin: 12px auto; /* centra el recuadro */
-    padding: 10px;
+    padding: 8px;
     border-radius: 10px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.35);
     background-clip: padding-box;
@@ -94,19 +94,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
 
-  /* Usamos posicionamiento absolute y opacity para permitir la transición de desvanecimiento.
-     Cada imagen se centra con transform; la .active tendrá opacity:1 */
+  /* Imágenes en absolute para permitir fade; centradas y limitadas para evitar descuadre */
   .carrusel1 img, .carrusel2 img, .carrusel3 img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: auto;
-    max-width: 90%;
+    max-width: 88%;
     height: auto;
-    max-height: 180px; /* limita alto en móvil */
+    max-height: 150px; /* reduce aún más para móviles (ajusta si quieres) */
     object-fit: contain;
     object-position: center center;
     border-radius: 8px;
@@ -123,37 +123,25 @@
     z-index: 2;
   }
 
-  /* Botones del carrusel como overlay a los lados, centrados verticalmente */
+  /* OCULTAR botones del carrusel en móviles (se mantienen en el DOM para accesibilidad/JS) */
+  .carrusel1 .carrusel-btn,
+  .carrusel2 .carrusel-btn,
+  .carrusel3 .carrusel-btn,
   .carrusel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    font-size: 20px;
-    line-height: 48px;
-    border-radius: 50%;
-    background-color: rgba(0,0,0,0.7);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-    z-index: 20;
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
 
-  .carrusel-btn.prev { left: 8px; }
-  .carrusel-btn.next { right: 8px; }
-
-  /* Texto y footer reducidos */
-  h2 { font-size: 1.25rem; }
-  p  { font-size: 0.95rem; }
-
-  /* Lightbox nav (mantener tamaño usable) */
+  /* Lightbox nav (seguir mostrando prev/next en el lightbox ampliado) */
   .lightbox-nav {
+    display: inline-flex;
     width: 56px;
     height: 56px;
     font-size: 28px;
   }
+
+  /* Texto y footer reducidos */
+  h2 { font-size: 1.25rem; }
+  p  { font-size: 0.95rem; }
 }
