@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Gorras</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+
+  <!-- 🔹 TÍTULO DESLIZANTE -->
+  <div id="scroll-container">
+    <div id="scroll-text"> DROP INNEDIT X ANYMORE </div>
+  </div>
+
+  <hr>
+  <br>
+
+  <main class="catalogo">
+    
+    <!-- INICIO PRIMERA GORRA DEL CATALOGO -->
+    <div class="gorra1" id="gorra1">
+      <div class="gorra-info">
+        <h2>MURATRAVIS ELECTRIC</h2>
+        <p>Precio: $1299</p>
+        <p>Gorra original de la nueva colaboracion, se envia con caja original y bolsa especial de proteccion para la gorra.</p>
+      </div>
+
+      <div class="carrusel1" id="carrusel1">
+        <img src="gorras/gorra1-removebg-preview.png" class="active" alt="Gorra 1">
+        <img src="gorras/gorra1-1-removebg-preview.png" alt="Gorra 1-1">
+        <img src="gorras/gorra1-2-removebg-preview.png" alt="Gorra 1-2">
+        <img src="gorras/gorra1-3-removebg-preview.png" alt="Gorra 1-3">
+        <button class="carrusel-btn prev">&#10094;</button>
+        <button class="carrusel-btn next">&#10095;</button>
+      </div>
+    </div>
+    <!-- FIN PRIMERA GORRA -->
+
+    <!-- INICIO SEGUNDA GORRA -->
+    <div class="gorra2" id="gorra2">
+      <div class="gorra-info2">
+        <h2>LA-MIRI BRUCE WAYNE</h2>
+        <p>Precio: $1299</p>
+        <p>Gorra con diseño de LA en el frente, original de colaboracion con caja y bolsa de proteccion originales.</p>
+      </div>
+
+      <div class="carrusel2" id="carrusel2">
+        <img src="gorras/gorra2.png" class="active" alt="Gorra 1">
+        <img src="gorras/gorra2-1.png" alt="Gorra 2">
+        <img src="gorras/gorra2-2.png" alt="Gorra 3">
+        <button class="carrusel-btn prev">&#10094;</button>
+        <button class="carrusel-btn next">&#10095;</button>
+      </div>
+    </div>
+    <!-- FIN SEGUNDA GORRA -->
+
+    <!-- INICIO TERCERA GORRA -->
+    <div class="gorra3" id="gorra3">
+      <div class="gorra-info3">
+        <h2>ANYMORE X INNEDIT</h2>
+        <p>Precio: $1299</p>
+        <p>Gorra con letras de costado que brillan en la oscuridad, caja y bolsa protectora originales.</p>
+      </div>
+
+      <div class="carrusel3" id="carrusel3">
+        <img src="gorras/gorra3.png" class="active" alt="Gorra 1">
+        <img src="gorras/gorra3-1.png" alt="Gorra 2">
+        <img src="gorras/gorra3-2.png" alt="Gorra 3">
+        <button class="carrusel-btn prev">&#10094;</button>
+        <button class="carrusel-btn next">&#10095;</button>
+      </div>
+    </div>
+    <!-- FIN TERCERA GORRA -->
+  </main>
+  <br>
+
+  <footer>
+    <!-- nuevo footer con 3 columnas: sobre, newsletter, contacto/enlaces -->
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Sobre DROP INNEDIT</h3>
+        <p>Gorras de diseño unicos de colaboracion. Calidad en cada detalle y envíos a ciudad de colima y villa de alvarez</p>
+        <p class="small">El costo de envio varia dependiendo de el punto de entrega.</p>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Contactos & Horarios</h3>
+        <p>WhatsApp: <a href="https://wa.me/+523123033692" target="_blank" rel="noopener noreferrer">+52 312 303 3692</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/diegooaguiirree/?hl=es" target="_blank" rel="noopener noreferrer">@diegooaguiirree</a></p>
+
+        <div class="footer-social">
+          <a href="https://www.instagram.com/diegooaguiirree/?hl=es" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="resources/logo_instagram.png" alt="Instagram" width="48" height="48">
+          </a>
+          <a href="https://wa.me/+523123033692" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <img src="resources/logo_whatsapp.png" alt="WhatsApp" width="48" height="48">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <!-- botones de navegación dentro del lightbox -->
+      <button id="lightbox-prev" class="lightbox-nav prev" aria-label="Anterior">&#10094;</button>
+      <button id="lightbox-next" class="lightbox-nav next" aria-label="Siguiente">&#10095;</button>
+      <img src="gorras/gorra1.png" id="lightbox-img" alt="Imagen ampliada">
+    </div>
+  </div>
+</body>
+</html>
