@@ -75,70 +75,85 @@
 
 /* Mobile phones */
 @media (max-width: 480px) {
-  /* Ajustes más agresivos para móviles pequeños */
+  /* Ajustes más compactos para móviles */
   .gorra1, .gorra2, .gorra3 {
-    padding: 10px;
+    padding: 8px;
     gap: 8px;
   }
 
   .carrusel1, .carrusel2, .carrusel3 {
-    width: 100%;
+    /* recuadro más pequeño y centrado */
+    width: min(260px, 90%);
+    height: 220px;               /* altura fija para contener la imagen y permitir overlay */
+    margin: 12px auto; /* centra el recuadro */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    background-clip: padding-box;
+    position: relative; /* contenedor relativo para botones absolutos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Asegurar imagen destacada cómoda en pantallas pequeñas */
+  /* Usamos posicionamiento absolute y opacity para permitir la transición de desvanecimiento.
+     Cada imagen se centra con transform; la .active tendrá opacity:1 */
+  .carrusel1 img, .carrusel2 img, .carrusel3 img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    max-height: 180px; /* limita alto en móvil */
+    object-fit: contain;
+    object-position: center center;
+    border-radius: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease-in-out; /* desvanecimiento */
+    z-index: 1;
+  }
   .carrusel1 img.active,
   .carrusel2 img.active,
   .carrusel3 img.active {
-    border-radius: 8px;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
   }
 
-  /* Texto más pequeño */
-  h2 { font-size: 1.3rem; }
+  /* Botones del carrusel como overlay a los lados, centrados verticalmente */
+  .carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    font-size: 20px;
+    line-height: 48px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    z-index: 20;
+  }
+
+  .carrusel-btn.prev { left: 8px; }
+  .carrusel-btn.next { right: 8px; }
+
+  /* Texto y footer reducidos */
+  h2 { font-size: 1.25rem; }
   p  { font-size: 0.95rem; }
 
-  /* Footer: elementos centrados y iconos algo más grandes para tocar */
-  .footer-contact .footer-social img {
-    width: 56px;
-    height: 56px;
-  }
-
-  /* Lightbox: botones nav más grandes en móvil */
+  /* Lightbox nav (mantener tamaño usable) */
   .lightbox-nav {
     width: 56px;
     height: 56px;
     font-size: 28px;
   }
-
-  /* NUEVO: botones del carrusel más grandes y fáciles de tocar en móviles */
-  .carrusel-btn {
-    /* tamaño táctil recomendado >=44px */
-    width: 56px;
-    height: 56px;
-    padding: 0;
-    font-size: 22px;
-    line-height: 56px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 6px;
-  }
-
-  /* Si los botones están en flujo (position: relative) mantener separación lateral */
-  .carrusel-btn.prev { margin-right: 12px; }
-  .carrusel-btn.next { margin-left: 12px; }
-
-  /* Si en algún caso mantienes posicionamiento absolute, asegúrate que queden visibles */
-  .carrusel1 .prev, .carrusel2 .prev, .carrusel3 .prev,
-  .carrusel1 .next, .carrusel2 .next, .carrusel3 .next {
-    z-index: 10;
-  }
 }
-
-/* Opcional: si prefieres que en móviles siga funcionando el carrusel overlay,
-   puedes comentar la sección que cambia position->static y volver a usar
-   absolute con un height fijo. Estos estilos usan la aproximación display:none/block
-   que es más simple y estable en móviles. */

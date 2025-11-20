@@ -5,10 +5,13 @@ carruselIds.forEach(id => {
   const carrusel = document.getElementById(id);
   if (!carrusel) return;
 
-  const images = carrusel.querySelectorAll('img');
+  const images = Array.from(carrusel.querySelectorAll('img'));
+  if (!images.length) return; // nada que mostrar
+
   const prevBtn = carrusel.querySelector('.prev');
   const nextBtn = carrusel.querySelector('.next');
-  let index = 0;
+  let index = images.findIndex(img => img.classList.contains('active'));
+  if (index === -1) index = 0; // asegurar índice inicial
   let intervalId;
 
   function showImage(i) {
@@ -18,7 +21,8 @@ carruselIds.forEach(id => {
   }
 
   function startAutoSlide() {
-    // Limpia cualquier intervalo anterior
+    // Sólo si hay más de una imagen
+    if (images.length < 2) return;
     clearInterval(intervalId);
     intervalId = setInterval(() => {
       index = (index + 1) % images.length;
@@ -38,8 +42,11 @@ carruselIds.forEach(id => {
     startAutoSlide(); // reinicia el intervalo
   }
 
-  prevBtn.addEventListener('click', handlePrev);
-  nextBtn.addEventListener('click', handleNext);
+  // mostrar la imagen inicial
+  showImage(index);
+
+  if (prevBtn) prevBtn.addEventListener('click', handlePrev);
+  if (nextBtn) nextBtn.addEventListener('click', handleNext);
 
   // Inicia el auto-slide por primera vez
   startAutoSlide();
